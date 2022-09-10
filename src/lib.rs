@@ -65,7 +65,7 @@ mod tests {
 
             for idx in 0..1 {
                 //let cylinder_angle = angle_radians + cylinder_offset * (idx as Float);
-                let cylinder_angle = angle_radians + *cyl_angle_offset.get(idx).unwrap();
+                let cylinder_angle = (angle_radians + *cyl_angle_offset.get(idx).unwrap()) % (4.0 * PI);
                 let state = MechanicalEngineState::from_radians(cylinder_angle);
                 let bolt_pos = cyl.piston_bolt_position_over_angle(cylinder_angle);
                 let volume = cyl.volume_angle(bolt_pos);
